@@ -1,0 +1,220 @@
+<div class="main-content" *ngIf="!isPageHidden">
+    <div class="container-fluid padding-content">
+        <div class="card">
+            <div class="card-content">
+                <h5 class="title">
+                    Levels
+                    <i class="material-icons">short_text</i>
+                </h5>
+                <button (click)="addLevel()" class="btn btn-info pull-right">
+                    <i class="material-icons">add</i>Add Level
+                </button>
+                <div class="card card-nav-tabs" >
+                    <div class="card-header" data-background-color="green">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                                <ul class="nav nav-tabs" data-tabs="tabs">
+                                    <li *ngFor="let level of levelList | async, let i=index" [ngClass]="i == 0 ? 'active' : ''" >
+                                        <!--[ngClass]="i == 0 ? 'active' : ''"-->
+                                        <a href="#id" (click)="onLevelSelected(level)" data-toggle="tab">
+                                            {{'L' + level.id}}
+                                        <div class="ripple-container"></div></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="tab-content">
+                            <div class="tab-pane active" *ngIf="currentLevel != null">
+                                <h4 class="title">{{currentProgram.name}} > L{{currentLevel.id}}</h4>
+                                <table class="table">
+                                    <tbody>
+                                        <tr *ngFor="let day of workoutDayList | async">
+                                            <td class="day-title">{{day.title}}</td>
+                                            <td class="td-actions text-right">
+                                                <button (click)="onRemoveWorkoutDay(day)" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                    <i class="material-icons">delete</i>
+                                                </button>
+                                                <button (click)="onCopyWorkoutDay(day)" type="button" rel="tooltip" title="Copy" class="btn btn-info btn-simple btn-xs">
+                                                    <i class="material-icons">content_copy</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!--<button class="btn btn-info" [routerLink]="['/dashboard/add-day/', currentProgram.id, currentLevel.idx]">-->
+                                <button (click)="onAddDay()" class="btn btn-info">
+                                    <i class="material-icons">add</i>Add Day
+                                </button>
+                                <button (click)="onReorderDays()" class="btn btn-default">
+                                    <i class="material-icons">transform</i>Reorder Days
+                                </button>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <h5 class="title">
+                    Level Requirements
+                    <i class="material-icons">short_text</i>
+                </h5>
+                <button (click)="onEditLevelRequirement()" class="btn btn-simple pull-right">
+                    <i class="material-icons">create</i>
+                </button>
+                <div class="card-content table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Level</th>
+                                <th *ngFor="let item of assessmentList | async">{{item.name}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let level of levelList | async, let i = index">
+                                <td>L{{level.id}}</td>
+                                <td>
+                                    {{11}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <h5 class="title">
+                    Assessment Movements
+                    <i class="material-icons">short_text</i>
+                </h5>
+                <div class="card-content table-responsive">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr *ngFor="let item of assessmentList | async, let i = index">
+                                <td>
+                                    <div class="pull-left">
+                                        <h4 class="title">{{item.name}}</h4>
+                                        <div>{{item.description}}</div>
+                                    </div>
+                                    <button (click)="onEditAssessment(item.idx)" class="btn btn-simple pull-right">
+                                        <i class="material-icons">create</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <spinner *ngIf="loading"></spinner>
+                                </td>
+                            </tr>
+                        <tbody>
+                    </table>            
+                    <div #addAssessment>
+                        <form [formGroup]="form" (ngSubmit)="onSubmit(form)" class="padding-form">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-black label-floating is-empty">
+                                        <label class="control-label">Exercise name</label>
+                                        <input formControlName="name" class="form-control" type="text" value="">
+                                    </div>
+                                </div>
+                            </div>     
+                            <div class="row">
+                                <div class="col-md-12">   
+                                    <div class="form-group form-black label-floating is-empty">
+                                        <label class="control-label">Exercise description</label>
+                                        <input formControlName="description" class="form-control" type="text" value="">
+                                    </div>
+                                </div>
+                            </div>   
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input">
+                                            This is a mobility exercise
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>   
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <h5 class="title">
+                                                Mobility Levels
+                                                <i class="material-icons">short_text</i>
+                                            </h5>
+                                            <div class="card-content table-responsive">
+                                                <label for="exercise-description" style="margin-bottom: 24px;">Upload up to four images for different mobility levels</label>
+                                                <div class="row file-chooser">
+                                                    <div class="col-md-12">
+                                                        <input type="file" formControlName="file1" (change)="onFile1Changed($event)" />
+                                                    </div>    
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group form-black label-floating is-empty">
+                                                            <input type="input" class="form-control" formControlName="levelText1" placeholder="Level text...">
+                                                        </div>    
+                                                    </div>
+                                                </div>    
+                                                <div class="row file-chooser">
+                                                    <div class="col-md-12">
+                                                        <input type="file" formControlName="file2" (change)="onFile2Changed($event)" />
+                                                    </div>    
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group form-black label-floating is-empty">
+                                                            <input type="input" class="form-control" formControlName="levelText2" placeholder="Level text...">
+                                                        </div>
+                                                    </div>        
+                                                </div>
+                                                <div class="row file-chooser">
+                                                    <div class="col-md-12">
+                                                        <input type="file" formControlName="file3" (change)="onFile3Changed($event)" />
+                                                    </div>    
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group form-black label-floating is-empty">
+                                                            <input type="input" class="form-control" formControlName="levelText3" placeholder="Level text...">
+                                                        </div>
+                                                    </div>        
+                                                </div>
+                                                <div class="row file-chooser">
+                                                    <div class="col-md-12">
+                                                        <input type="file" formControlName="file4" (change)="onFile4Changed($event)" />
+                                                    </div>    
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group form-black label-floating is-empty">
+                                                            <input type="input" class="form-control" formControlName="levelText4" placeholder="Level text...">
+                                                        </div>
+                                                    </div>        
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>    
+                            </div>
+                            <div class="row pull-left">
+                                <button class="btn btn-primary">Save Exercise</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <button class="btn btn-info" (click)="addAssessment.toggle()"><i class="fa fa-plus"></i> Add Exercise</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="main-content">
+  <div class="container-fluid padding-content">
+    <div class="card" >
+      <div class="card-header" data-background-color="blue">
+          <h4 class="title">Add Day</h4>
+          <p class="category">{{currentProgram.name}} > Level {{currentLevel.id}}</p>
+      </div>
+      <div class="card-content">
+        <h5 class="title">
+          Day Name
+          <i class="material-icons">short_text</i>
+        </h5>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group form-black label-floating is-empty">
+                <input type="text" class="form-control" placeholder="e.g. Week 1, Day1" >
+            </div>
+          </div>
+        </div>
+        <div class="card" >
+          <div class="card-header" data-background-color="blue">
+              <p class="category">
+                Sequence #1
+                <i class="material-icons">short_text</i>
+              </p>
+          </div>
+          <div class="card-content">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group form-black label-floating is-empty">
+                  <label>Sequence Name</label>
+                  <input type="text" class="form-control" placeholder="e.g. Warm Up, Strength Training, Core, etc." >
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group form-black label-floating is-empty">
+                  <label>Sequence Note</label>
+                  <input type="text" class="form-control" placeholder="No Rush. Take Your Time." >
+                </div>
+              </div>
+            </div>  
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group form-black label-floating is-empty">
+                  <label>Time (in minutes)</label>
+                  <input type="text" class="form-control" >
+                </div>
+              </div>
+            </div>       
+            <button class="btn btn-info" [routerLink]="['/dashboard/add-day/', currentProgram.id, currentLevel.idx]">
+              <i class="material-icons">add</i>Add Day
+            </button>
+          </div>
+      </div>
+      </div> 
+      <button type="submit" class="btn btn-info pull-right">Add Program</button>
+      <spinner *ngIf="loading"></spinner>
+      <div class="clearfix"></div>
+    </div>
+</div>

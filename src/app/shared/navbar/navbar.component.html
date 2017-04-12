@@ -1,0 +1,45 @@
+<nav class="navbar navbar-success" *ngIf="authenticated">
+    <ul class="nav navbar-nav navbar-left">
+        <li>
+            <a href="#">
+                <p>
+                    <img [src]="logo" class="logo" />
+                </p>
+            </a>
+        </li>
+        <li class="dropdown">
+            <a data-toggle="dropdown">
+                <p>
+                    Programs
+                    <b class="caret"></b>
+                </p>
+            </a>
+            <ul class="dropdown-menu">                            
+                <li>
+                    <a [routerLink]="['/dashboard/add-program/']">
+                        <i class="material-icons">add</i>
+                        Add Program
+                    </a>
+                </li>
+                
+                <li class="divider"></li>
+                <li *ngFor="let item of programList | async">
+                    <a [routerLink]="['/dashboard/program/', item.$key]">{{item.name}}</a>
+                </li>
+                <li *ngIf="loading">
+                    <spinner [itemSize]="'small'"></spinner>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="#" (click)="logout()">
+                <i class="material-icons">power_settings_new</i>
+                <p>Log out</p>
+            </a>
+        </li>
+        <li class="separator hidden-lg hidden-md"></li>
+    </ul>
+</nav>

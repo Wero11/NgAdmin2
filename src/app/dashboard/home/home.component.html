@@ -1,0 +1,48 @@
+<div class="main-content" *ngIf="!isPageHidden">
+  <div class="container-fluid padding-content">
+        <div class="col-md-12">
+            <div class="card card-plain">
+                <div class="card-header" data-background-color="blue">
+                    <h4 class="title">Dashboard</h4>
+                </div><p>
+                <h5 class="title">
+                    Programs
+                    <i class="material-icons">short_text</i>
+                </h5>
+                <div class="card-content table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Ative Users</th>
+                                <th>%</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of programList | async, let i = index">
+                                <td>{{i + 1}}</td>
+                                <td>
+                                    <a [routerLink]="['/dashboard/program/', item.$key]">{{item.name}}</a>
+                                </td>
+                                <td>
+                                    <div class="progress-xs progress" type="success">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" [style.width]="'90%'"></div>
+                                    </div>
+                                </td>
+                                <td>90%</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <spinner *ngIf="loading"></spinner>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

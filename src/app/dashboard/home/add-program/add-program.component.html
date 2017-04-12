@@ -1,0 +1,88 @@
+<div class="main-content">
+  <div class="container-fluid padding-content">
+    <div class="card" >
+        <div class="card-header" data-background-color="blue">
+            <h4 class="title">Add Program</h4>
+        </div>
+        <div class="card-content">
+            <h5 class="title">
+                Program Details
+                <i class="material-icons">short_text</i>
+            </h5>
+            <form [formGroup]="form" (ngSubmit)="onSubmit(form)" class="padding-form">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-black label-floating is-empty">
+                            <label class="control-label">Program Name</label>
+                            <input formControlName="name" type="text" class="form-control" >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Program Description</label>
+                            <div class="form-group form-black label-floating is-empty">
+                                <textarea formControlName="description" class="form-control" rows="2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Billing Plan</label>
+                        <div class="dropdown select-billing-plan">
+                            <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span>{{form.value.billingType}}</span>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a (click)="selectbillingType('monthly')">Monthly</a></li>
+                                <li><a (click)="selectbillingType('bundle')">Bundle</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-black label-floating is-empty">
+                            <label class="control-label">Billing Price</label>
+                            <input formControlName="billingPrice" type="text" class="form-control" >
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="row">-->
+                    <!--<div class="col-md-12">-->
+                        
+                    <!--</div>-->
+                <!--</div>-->
+
+                <div class="row file-chooser">
+                    <div class="col-md-12">
+                        <label class="">Program Image</label>
+                        <input type="file" (change)="onImageChanged($event)" accept=".jpg,.png,.gif" />
+                    </div>
+                </div>
+                <div class="row file-chooser">
+                    <div class="col-md-12">
+                        <label class="">Program Video</label>
+                        <input type="file" (change)="onVideoChanged($event)" />
+                    </div>
+                </div>           
+                <button type="submit" class="btn btn-info pull-right">Add Program</button>
+                <spinner *ngIf="loading"></spinner>
+                <div class="clearfix"></div>
+            </form>
+        </div>
+</div><select id="example-getting-started" multiple="multiple">
+                            <option value="cheese">Cheese</option>
+                            <option value="tomatoes">Tomatoes</option>
+                            <option value="mozarella">Mozzarella</option>
+                            <option value="mushrooms">Mushrooms</option>
+                            <option value="pepperoni">Pepperoni</option>
+                            <option value="onions">Onions</option>
+                        </select>

@@ -1,0 +1,12 @@
+.err-container {
+    text-align: center;
+    padding-top: 2.4rem;
+}
+.err-container h1 {
+    font-size: 48px;
+    font-weight: bold;
+}
+.err-container p {
+    font-size: 24px;
+    font-weight: 100;
+}

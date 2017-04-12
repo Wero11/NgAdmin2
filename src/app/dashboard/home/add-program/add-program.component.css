@@ -1,0 +1,22 @@
+.select-billing-plan {
+    display: inline;
+    margin-left: 24px;
+}
+
+.select-billing-plan a {
+    padding: 8px 24px !important;
+    text-transform: capitalize;
+}
+
+.select-billing-plan > a > span {
+    padding: 4px 8px !important;
+}
+
+.file-chooser {
+    border-bottom: 1px solid #dedede;
+    padding-top: 16px;
+    padding-bottom: 8px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+

@@ -1,0 +1,9 @@
+.card-nav-tabs .card-header {
+    padding: 0px;
+    box-shadow: none;
+    margin-top: 8px;
+}
+
+.table .day-title {
+    width: 84% !important;
+}

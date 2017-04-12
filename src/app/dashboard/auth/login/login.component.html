@@ -1,0 +1,44 @@
+<div class="main-content container-center">
+  <div class="container-fluid">
+      <div class="row form-center">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header" data-background-color="blue">
+                      <h4 class="title">Login</h4>
+                      <p class="category">To Login, please type Email and Password</p>
+                  </div>
+                  <div class="card-content">
+                      <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <div class="form-group form-black label-floating is-empty">
+                                      <label class="control-label">Email Address</label>
+                                      <input formControlName="email" type="email" class="form-control" >
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <div class="form-group form-black label-floating is-empty">
+                                      <label class="control-label">Password</label>
+                                      <input formControlName="password" type="password" class="form-control" >
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-buttons">
+                              <button [disabled]="!form.valid || loading" type="submit" class="btn btn-info pull-left">Login</button>
+                              <a [routerLink]="['/signup']" class="text-info pull-right">
+                                I don't have an account.
+                              </a>
+                          </div>
+                          <spinner *ngIf="loading"></spinner>
+                          <div class="clearfix"></div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

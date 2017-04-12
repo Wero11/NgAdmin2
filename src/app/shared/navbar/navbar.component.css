@@ -1,0 +1,105 @@
+.navbar {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navbar-nav {
+    margin: 0 !important;
+}
+
+.navbar-nav .logo {
+    height: 28px;
+}
+
+.navbar-nav p {
+    line-height: normal !important;
+    display: inline-block !important;
+    margin: 0 !important;
+}
+
+.navbar-left, .navbar-nav > li {
+    float: left !important;
+}
+.navbar-right {
+    float: right !important;
+}
+
+.dropdown > a {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    background: #fff !important;
+    position: absolute !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175) !important;
+}
+
+.dropdown-menu i {
+    margin-top: -4px !important;
+}
+.navbar-form {
+    margin-top: 21px;
+    margin-bottom: 21px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.navbar-nav > li > .dropdown-menu, .dropdown .dropdown-menu {
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -o-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+    -moz-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+    -o-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+    -ms-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+    transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+}
+
+.navbar-nav > li.open > .dropdown-menu, .dropdown.open .dropdown-menu {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 29px -50px;
+    -moz-transform-origin: 29px -50px;
+    -o-transform-origin: 29px -50px;
+    -ms-transform-origin: 29px -50px;
+    transform-origin: 29px -50px;
+}
+
+.navbar-nav > li > .dropdown-menu:before {
+    border-bottom: 11px solid rgba(0, 0, 0, 0.2);
+    border-left: 11px solid transparent;
+    border-right: 11px solid transparent;
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 12px;
+    top: -11px;
+}
+
+.navbar-nav > li > .dropdown-menu:after {
+    border-bottom: 11px solid #FFFFFF;
+    border-left: 11px solid transparent;
+    border-right: 11px solid transparent;
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 12px;
+    top: -10px;
+}
+
+.navbar-nav.navbar-right > li > .dropdown-menu:before {
+    left: auto;
+    right: 12px;
+}
+
+.navbar-nav.navbar-right > li > .dropdown-menu:after {
+    left: auto;
+    right: 12px;
+}

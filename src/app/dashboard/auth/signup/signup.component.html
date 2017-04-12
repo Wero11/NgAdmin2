@@ -1,0 +1,49 @@
+<div class="main-content container-center">
+  <div class="container-fluid">
+      <div class="row form-center">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header" data-background-color="blue">
+                      <h4 class="title">Signup</h4>
+                  </div>
+                  <div class="card-content">
+                      <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <div class="form-group form-black label-floating is-empty">
+                                      <label class="control-label">Full Name</label>
+                                      <input formControlName="fullname" type="text" class="form-control" >
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <div class="form-group form-black label-floating is-empty">
+                                      <label class="control-label">Email</label>
+                                      <input formControlName="email" type="email" class="form-control" >
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <div class="form-group form-black label-floating is-empty">
+                                      <label class="control-label">Password</label>
+                                      <input formControlName="password" type="password" class="form-control" >
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-buttons">
+                              <button [disabled]="!form.valid" type="submit" class="btn btn-info pull-left">Signup</button>
+                              <a [routerLink]="['/login']" class="text-info pull-right">I have an account</a>
+                          </div>
+                          <spinner *ngIf="loading"></spinner>
+                          <div class="clearfix"></div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
